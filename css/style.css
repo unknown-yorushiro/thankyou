@@ -195,8 +195,8 @@ section.padding0 {
 	padding: 0;
 }
 div.padding0 {
-	margin-left: calc(-1 * var(--content-space));
-	margin-right: calc(-1 * var(--content-space));
+	margin-left: calc(-3 * var(--content-space));
+	margin-right: calc(-3 * var(--content-space));
 }
 
 
