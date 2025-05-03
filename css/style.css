@@ -12,7 +12,7 @@
 :root {
 
 	/*余白の一括管理用。主に左右の余白に使っています。2rem＝２文字分。*/
-	--content-space: 2rem;
+	--content-space: 10rem;
 	
 }
 
@@ -51,7 +51,7 @@ html,body {
 
 
 body {
-	margin: 0;padding:5;
+	margin: 0;padding:0;
 	
         font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif; /*フォント種類（ゴシック）*/
 	-webkit-text-size-adjust: none;
