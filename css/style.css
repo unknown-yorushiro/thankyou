@@ -12,7 +12,7 @@
 :root {
 
 	/*余白の一括管理用。主に左右の余白に使っています。2rem＝２文字分。*/
-	--content-space: -5rem;
+	--content-space: 2rem;
 	
 }
 
