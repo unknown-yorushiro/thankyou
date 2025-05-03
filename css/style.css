@@ -51,7 +51,7 @@ html,body {
 
 
 body {
-	margin: 0;padding:0;
+	margin: 0;padding:5;
 	
         font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif; /*フォント種類（ゴシック）*/
 	-webkit-text-size-adjust: none;
@@ -195,8 +195,8 @@ section.padding0 {
 	padding: 0;
 }
 div.padding0 {
-	margin-left: calc(-3 * var(--content-space));
-	margin-right: calc(-3 * var(--content-space));
+	margin-left: calc(-1 * var(--content-space));
+	margin-right: calc(-1 * var(--content-space));
 }
 
 
