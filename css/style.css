@@ -1,0 +1,224 @@
+@charset "utf-8";
+
+
+
+/*Font Awesomeの読み込み
+---------------------------------------------------------------------------*/
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
+
+
+/*CSSカスタムプロパティ（サイト全体を一括管理する為の設定）
+---------------------------------------------------------------------------*/
+:root {
+
+	/*余白の一括管理用。主に左右の余白に使っています。2rem＝２文字分。*/
+	--content-space: 2rem;
+	
+}
+
+
+/*animation11のキーフレーム設定（汎用的）
+---------------------------------------------------------------------------*/
+@keyframes animation1 {
+	0% {left: -200px;}
+	100% {left: 0px;}
+}
+
+
+/*opa1のキーフレーム設定（汎用的）
+---------------------------------------------------------------------------*/
+@keyframes opa1 {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+
+/*全体の設定
+---------------------------------------------------------------------------*/
+body * {box-sizing: border-box;}
+html,body {
+	font-size: 13px;	/*基準となるフォントサイズ。*/
+}
+
+	/*画面幅900px以上の追加指定*/
+	@media screen and (min-width:900px) {
+
+	html, body {
+		font-size: 15px;	/*基準となるフォントサイズ。*/
+	}
+
+	}/*追加指定ここまで*/
+
+
+body {
+	margin: 0;padding:0;
+	
+        font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif; /*フォント種類（ゴシック）*/
+	-webkit-text-size-adjust: none;
+	background: #FFF2D2;	/*背景色*/
+	color: #000;		/*文字色*/
+	line-height: 2;		/*行間*/
+	overflow-x: hidden;
+}
+
+/*リセット*/
+figure {margin: 0;}
+dd {margin: 0;}
+nav,ul,li,ol {margin: 0;padding: 0;}
+nav ul {list-style: none;}
+
+/*table全般の設定*/
+table {border-collapse:collapse;}
+
+/*画像全般の設定*/
+img {border: none;max-width: 100%;height: auto;vertical-align: middle;}
+
+/*videoタグ*/
+video {max-width: 100%;}
+
+/*iframeタグ*/
+iframe {width: 100%;}
+
+/*他*/
+input {font-size: 1rem;}
+
+/*section*/
+section {
+	padding: var(--content-space);	/*section内の余白。冒頭のcontent-spaceを読み込みます。*/
+}
+
+
+/*リンクテキスト全般の設定
+---------------------------------------------------------------------------*/
+a {
+	color: inherit;
+	transition: 0.3s;	/*hoverまでにかける時間。0.3秒。*/
+}
+
+/*マウスオン時*/
+a:hover {
+	filter: brightness(1.1);	/*少しだけ明るくする*/
+}
+
+
+/*コンテナー（サイト全体を囲むブロック）
+---------------------------------------------------------------------------*/
+#container {
+	overflow-x: hidden;
+	position: relative;
+	animation: opa1 1s 0.4s both;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	max-width: 1800px;	/*サイトの最大幅。これ以上広がらない。*/
+	margin: 0 auto;
+}
+
+
+/*コンテンツ
+---------------------------------------------------------------------------*/
+/*コンテンツブロック*/
+#contents {
+	flex: 1;
+}
+
+/*コンテンツ内で使用するul,ol要素（リストタグ）*/
+#contents ul,#contents ol {
+	margin-left: 2rem;
+	margin-right: 2rem;
+}
+
+
+/*p要素（段落タグ）
+---------------------------------------------------------------------------*/
+p {
+	margin-left: 1rem;	/*左に１文字分のスペース*/
+	margin-right: 1rem;	/*右に１文字分のスペース*/
+}
+
+
+/*フッター設定
+---------------------------------------------------------------------------*/
+footer a {color: inherit;text-decoration: none;}
+footer small {font-size: 100%;}
+footer {
+	margin-top: auto;
+	font-size: 0.8rem;		/*文字サイズ。80%。*/
+	background: #eee;		/*背景色*/
+	color: #555;			/*文字色*/
+	text-align: center;		/*内容をセンタリング*/
+	padding: 1rem;	/*ボックス内の余白。１文字分。*/
+}
+
+
+/*著作部分（※意図的に見えなくしたりしないで下さい。規約違反になります。）
+---------------------------------------------------------------------------*/
+.pr a {
+	text-decoration: none;display: block;
+	background: #555;
+	color: #ccc;
+	text-align: right;
+	padding: 0.5rem 1rem;
+	font-size: 0.8rem;
+}
+.pr a::before {
+	font-family: "Font Awesome 6 Free";
+	content: "\e2ca";
+	font-weight: bold;
+	margin-right: 0.5em;
+}
+
+
+/*PAGE TOP（↑）設定
+---------------------------------------------------------------------------*/
+.pagetop-show {display: block;}
+
+/*ボタンの設定*/
+.pagetop a {
+	display: block;text-decoration: none;text-align: center;z-index: 99;
+	animation: opa1 1s 0.4s both;
+	position: fixed;	/*スクロールに追従しない(固定で表示)為の設定*/
+	right: 20px;		/*右からの配置場所指定*/
+	bottom: 20px;		/*下からの配置場所指定*/
+	color: #fff;		/*文字色*/
+	font-size: 1.5rem;	/*文字サイズ*/
+	background: rgba(0,0,0,0.2);	/*背景色。0,0,0は黒の事で0.2は色が20%出た状態。*/
+	width: 60px;		/*幅*/
+	line-height: 60px;	/*高さ*/
+	border-radius: 50%;	/*円形にする*/
+}
+
+
+/*余白調整用
+---------------------------------------------------------------------------*/
+section.padding0 {
+	padding: 0;
+}
+div.padding0 {
+	margin-left: calc(-1 * var(--content-space));
+	margin-right: calc(-1 * var(--content-space));
+}
+
+
+/*その他
+---------------------------------------------------------------------------*/
+.clearfix::after {content: "";display: block;clear: both;}
+.color-check, .color-check a {color: #ff0000 !important;}
+.l {text-align: left !important;}
+.c {text-align: center !important;}
+.r {text-align: right !important;}
+.ws {width: 95%;display: block;}
+.wl {width: 95%;display: block;}
+.mb0 {margin-bottom: 0px !important;}
+.mb30 {margin-bottom: 30px !important;}
+.look {display: inline-block;padding: 0px 10px;background: #eee;border: 1px solid #ccc; color: #888; border-radius: 3px;margin: 5px 0; word-break: break-all;}
+.small {font-size: 0.75em;}
+.large {font-size: 2em; letter-spacing: 0.1em;}
+.pc {display: none;}
+.dn {display: none !important;}
+.block {display: block !important;}
+
+/*大きな画面の場合*/
+.large-screen .ws {width: 48%;display: inline;}
+.large-screen .sh {display: none;}
+.large-screen .pc {display: block;}
