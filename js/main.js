@@ -221,32 +221,8 @@ $(function() {
     }
 });
 
-
-//===============================================================
-// 
-//===============================================================
-
-//===============================================================
-// ポップアップ
-//===============================================================
-/*
-$(function() {
-	// セッション内でポップアップが既に表示されているかチェック
-	if (!sessionStorage.getItem('popupShown')) {
-		setTimeout(function(){
-			if ($("#popup2-overlay-parts").length) {
-				$("#popup2-overlay-parts").fadeIn(0);
-			}
-			$("#popup3-parts").fadeIn(0);
-			sessionStorage.setItem('popupShown', 'true');
-		}, 3000); // 3秒後にポップアップを表示
-	}
-});
-*/
-
 const sleep = (time) => new Promise((resolve) => setTimeout(resolve, time));
 //timeはミリ秒
-
 
 //===============================================================
 // 異常ポップアップ演出
@@ -308,9 +284,9 @@ async function directionWarning(){
       sleep_time = 500;
     }else if (i == 5){
       sleep_time = 250;
+      startGarble();
     }else if(i == 8){
       sleep_time = 200;
-      startGarble();
     }else if(i == 11){
       sleep_time = 100;
     }else if(i == 14){
