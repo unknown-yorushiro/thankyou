@@ -220,3 +220,168 @@ $(function() {
         }, 10);
     }
 });
+
+
+//===============================================================
+// 
+//===============================================================
+
+//===============================================================
+// ポップアップ
+//===============================================================
+/*
+$(function() {
+	// セッション内でポップアップが既に表示されているかチェック
+	if (!sessionStorage.getItem('popupShown')) {
+		setTimeout(function(){
+			if ($("#popup2-overlay-parts").length) {
+				$("#popup2-overlay-parts").fadeIn(0);
+			}
+			$("#popup3-parts").fadeIn(0);
+			sessionStorage.setItem('popupShown', 'true');
+		}, 3000); // 3秒後にポップアップを表示
+	}
+});
+*/
+
+const sleep = (time) => new Promise((resolve) => setTimeout(resolve, time));
+//timeはミリ秒
+
+
+//===============================================================
+// 異常ポップアップ演出
+//===============================================================
+/*
+ * 0 : modal名
+ * 1 : 位置(top)
+ * 2 : 位置(left)
+ */
+let bugWindowList = [
+  ['bugPopup1', "50px", "50px"],
+  ['bugPopup2', "100px", "900px"],
+  ['bugPopup3', "140px", "350px"],
+  ['bugPopup4', "190px", "120px"],
+  ['bugPopup5', "250px", "780px"],
+  ['bugPopup6', "290px", "350px"],
+  ['bugPopup7', "340px", "610px"],
+  ['bugPopup8', "380px", "270px"],
+  ['bugPopup9', "430px", "490px"],
+  ['bugPopup10', "80px", "550px"],
+  ['bugPopup11', "23px", "420px"],
+  ['bugPopup12', "200px", "620px"],
+  ['bugPopup13', "10px", "820px"],
+  ['bugPopup14', "370px", "850px"],
+  ['bugPopup15', "100px", "170px"],
+  ['bugPopup16', "350px", "100px"],
+  ['bugPopup17', "450px", "40px"],
+  ['bugPopup18', "460px", "700px"],
+  ['bugPopup19', "215px", "950px"],
+  ['bugPopup20', "265px", "150px"]
+];
+async function directionWarning(){
+  let i = 0;
+  let sleep_time = 1500;
+
+  //document.body.style.filter = "invert(1)";
+
+  document.body.style.background = "black";
+  document.body.style.color = "red";
+  document.getElementById("full").style.background = "black";
+  document.getElementById("footer").style.color = "black";  // 文字色を赤に変更
+  document.getElementById("footer").style.background = "black";  // 文字色を赤に変更
+
+  await sleep(2000);
+  let variables = [];
+  for (i=0, len=bugWindowList.length; i<20; i++, len--){
+    rand = Math.floor( Math.random() * len); // 0～len-1の範囲の整数からランダムに値を取得  
+
+    variables[i] = document.getElementById(bugWindowList[rand][0]);
+    variables[i].style.zIndex = i + 1000;
+    variables[i].style.top = bugWindowList[rand][1];
+    variables[i].style.left = bugWindowList[rand][2];
+    variables[i].style.display = "block";
+
+    bugWindowList.push(bugWindowList.splice(rand, 1)); // 配列のランダム値に対応するインデックスを得たうえで元々の配列から取り除く
+
+    await sleep(sleep_time);
+    if(i == 2){
+      sleep_time = 500;
+    }else if (i == 5){
+      sleep_time = 250;
+    }else if(i == 8){
+      sleep_time = 200;
+      startGarble();
+    }else if(i == 11){
+      sleep_time = 100;
+    }else if(i == 14){
+      sleep_time = 100;
+    }
+  }
+
+  $('html, body').css('overflow', 'hidden');
+  
+  showLoadingPopup();
+}
+
+let isExe = false;
+function directionBugStart() {
+  if(!isExe){
+    isExe = true;
+    setTimeout(directionWarning, 15000);  
+  }
+}
+
+//===============================================================
+// 文字化け演出
+//===============================================================
+const originalText = document.getElementById("contents").textContent;
+const textElement = document.getElementById("contents");
+let intervalId = null;
+function randomUnicodeChar() {
+  // 無意味で表示が壊れやすい文字の範囲から選ぶ（制御文字除く）
+  const ranges = [
+    [0x0370, 0x03FF],   // ギリシャ文字
+    [0x0400, 0x04FF],   // キリル文字
+    [0x2000, 0x206F],   // 一般的な記号
+    [0x2100, 0x214F],   // 書記記号
+    [0x2190, 0x21FF],   // 矢印
+    //[0x2300, 0x23FF],   // 技術記号
+    [0x2500, 0x257F],   // ボックス描画
+    [0x2E80, 0x2EFF],   // CJK部首
+    [0x3000, 0x30FF],   // 日本語記号・カタカナ
+  ];
+
+  const [start, end] = ranges[Math.floor(Math.random() * ranges.length)];
+  return String.fromCharCode(start + Math.floor(Math.random() * (end - start)));
+}
+
+function garbleText(length) {
+  return Array.from({ length }).map(() => randomUnicodeChar()).join('');
+}
+
+function startGarble() {
+  const length = originalText.length;
+  if (intervalId) clearInterval(intervalId);
+
+  intervalId = setInterval(() => {
+    textElement.textContent = garbleText(length);
+  }, 150);
+}
+
+
+//===============================================================
+// リダイレクト時プログレスバー演出
+//===============================================================
+function showLoadingPopup() {
+  document.getElementById("redirect-popup").style.display = "block";
+
+  let fill = document.getElementById("progressBarFill");
+  let progress = 0;
+  let interval = setInterval(() => {
+    progress += 10;
+    fill.style.width = progress + "%";
+    if (progress >= 100) {
+      window.location.href = 'https://drive.google.com/file/d/1MhI9bIhBlz4XWwOXz1CHd4Q83tWEmoKJ/view?usp=drive_link';
+    }
+  }, 300);
+}
