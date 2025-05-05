@@ -356,7 +356,7 @@ function showLoadingPopup() {
   let interval = setInterval(() => {
     progress += 10;
     fill.style.width = progress + "%";
-    if (progress >= 100) {
+    if (progress == 100) {
       window.location.href = 'https://drive.google.com/file/d/1MhI9bIhBlz4XWwOXz1CHd4Q83tWEmoKJ/view?usp=drive_link';
     }
   }, 300);
