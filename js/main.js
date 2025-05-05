@@ -357,7 +357,7 @@ function showLoadingPopup() {
     progress += 10;
     fill.style.width = progress + "%";
     if (progress == 100) {
-      window.location.href = 'https://drive.google.com/file/d/1MhI9bIhBlz4XWwOXz1CHd4Q83tWEmoKJ/view?usp=drive_link';
+      window.location.href = 'https://unknown-yorushiro.github.io/whoami/';
     }
   }, 300);
 }
