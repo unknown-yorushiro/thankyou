@@ -303,7 +303,7 @@ let isExe = false;
 function directionBugStart() {
   if(!isExe){
     isExe = true;
-    setTimeout(directionWarning, 15000);  
+    setTimeout(directionWarning, 25000);  
   }
 }
 
