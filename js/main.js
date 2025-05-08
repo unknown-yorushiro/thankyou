@@ -254,6 +254,7 @@ let bugWindowList = [
   ['bugPopup19', "215px", "950px"],
   ['bugPopup20', "265px", "150px"]
 ];
+var audio_noise = document.querySelector('audio');
 async function directionWarning(){
   let i = 0;
   let sleep_time = 1500;
@@ -295,7 +296,9 @@ async function directionWarning(){
   }
 
   $('html, body').css('overflow', 'hidden');
-  
+  audio_noise.loop = false;
+  audio_noise.playbackRate = "0.25";
+  audio_noise.src = 'effect/error2.mp3';
   showLoadingPopup();
 }
 
