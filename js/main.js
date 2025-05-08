@@ -280,8 +280,12 @@ async function directionWarning() {
     variables[i].style.display = "block";
 
     bugWindowList.push(bugWindowList.splice(rand, 1)); // 配列のランダム値に対応するインデックスを得たうえで元々の配列から取り除く
-
+  
+    audio_noise.currentTime = 0;
+    audio_noise.play();
     await sleep(sleep_time);
+    audio_noise.pause();
+
     if (i == 2) {
       sleep_time = 500;
     } else if (i == 5) {
