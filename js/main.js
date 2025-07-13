@@ -255,6 +255,8 @@ let bugWindowList = [
   ['bugPopup20', "265px", "150px"]
 ];
 var audio_noise = document.querySelector('audio');
+audio_noise.volume = 0.5;
+
 async function directionWarning() {
   let i = 0;
   let sleep_time = 1500;
